@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import Home from './components/Home'
+import About from './components/About'
+import Fentities from './components/Fentities'
+import Fentity from './components/Fentity';
+
 
 class App extends Component {
   constructor() {
@@ -17,19 +23,27 @@ class App extends Component {
       ]
     }
   }
-  
+
   render() {
     const state = this.state
     return (
-      <div className="App">
-        <div id="home-background"></div>
-        <div id="main-links">
-          {/* Main Links */}
+      <Router>
+        <div className="App">
+          <div id="home-background"></div>
+          <div id="main-links">
+            {/* Main Links */}
+            <Link to='/'>Home</Link>
+            <Link to='/About'>About</Link>
+          </div>
+          {/* Routes go here v */}
+          <Route path='/' exact component={Home} />
+          <Route path='/About' exact render={()=> <About key={'About'} items={Object.keys(state)} /> } />
+          <Route path='/directory/:fentities' exact render={({match})=> <Fentities key={'Fentities'} match={match} state={state} /> } />
+          <Route path='/directory/:fentities/:name' exact render={({match})=> <Fentity key={'Fentities'} match={match} state={state.wizards}   /> } />
+          {/* Routes go here ^ */}
         </div>
-        {/* Routes go here v */}
 
-        {/* Routes go here ^ */}
-      </div>
+      </Router>
     );
   }
 }
