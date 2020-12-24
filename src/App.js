@@ -39,7 +39,7 @@ class App extends Component {
           <Route path='/' exact component={Home} />
           <Route path='/About' exact render={()=> <About key={'About'} items={Object.keys(state)} /> } />
           <Route path='/directory/:fentities' exact render={({match})=> <Fentities key={'Fentities'} match={match} state={state} /> } />
-          <Route path='/directory/:fentities/:name' exact render={({match})=> <Fentity key={'Fentities'} match={match} state={state.wizards}   /> } />
+          <Route path='/directory/:fentities/:name' exact render={({match})=> <Fentity key={'Fentities'} match={match} state={state}   /> } />
           {/* Routes go here ^ */}
         </div>
 

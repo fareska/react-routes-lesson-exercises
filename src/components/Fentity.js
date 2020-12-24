@@ -3,20 +3,14 @@ import '../styles/fentity.css'
 
 
 class Fentity extends Component {
-    
-
-    // getFentity= name =>{
-    //     this.chooseFentity(name)
-    // }
 
     render() {
         
         let fentityName  = (this.props.match.params.name)
+        let fentities = this.props.match.params.fentities
+        let fentity  = this.props.state[fentities].find(f=> f.name===fentityName)
         
-        let fentity  = this.props.state.find(f=> f.name===fentityName)
-
         return (
-            // <div id="creature-container" onClick={this.getFentity}>
             <div id="creature-container" >
                 <h1>{fentity.name}</h1>
                 <img src={fentity.imgUrl} alt=""/>
